@@ -26,5 +26,20 @@ const hangmanWords = [
 
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
-    alert(e.key);
+    var currentWord = document.getElementById('currentWord');
+    var wordString = '';
+    var randomWord = hangmanWords[Math.floor(Math.random() * hangmanWords.length)];
+
+    if (currentWord.textContent === '') {
+
+        for (var i = 0; i < randomWord.length; i++) {
+            if (randomWord[i] === ' ') {
+                wordString = wordString.concat(' ')
+            } else {
+                wordString = wordString.concat('_')
+            }
+        }
+        alert(randomWord);
+        currentWord.textContent = wordString; 
+    }
 };
