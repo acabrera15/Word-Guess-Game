@@ -32,15 +32,22 @@ var lettersGuessedDiv = document.getElementById('lettersGuessedDiv');
 var wordString = '';//holds the string that will be ouput to screen
 var randomWord;
 var randWordIndex = 0;
-var guessedLetters = []
+var guessedLetters = [];
+var usedWords = [];
 
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
-    console.log(e.keyCode);
+
     if (e.keyCode >= 65 && e.keyCode <= 90) {
         //initializes game
         if (currentWord.textContent === '') {
-            randWordIndex = Math.floor(Math.random() * Object.keys(hangmanWords).length);
+            if (usedWords.length === Object.keys(hangmanWords).length) {
+                usedWords = [];
+            }
+            while (usedWords.includes(randWordIndex)) {
+                randWordIndex = Math.floor(Math.random() * Object.keys(hangmanWords).length);
+            }
+            usedWords.push(randWordIndex);
             randomWord = Object.keys(hangmanWords)[randWordIndex]; //get random word from array
 
             for (var i = 0; i < randomWord.length; i++) {
@@ -64,6 +71,8 @@ document.onkeyup = function (e) {
                 wordString = '';
                 numOfGuesses = 10;
                 numGuesses.textContent = numOfGuesses.toString();
+                guessedLetters = [];
+                lettersGuessedDiv.textContent = guessedLetters.join(' ');
             }
         }
     }
@@ -96,6 +105,8 @@ let letterChecker = function (letter) {
             wordString = '';
             numOfGuesses = 10;
             numGuesses.textContent = numOfGuesses.toString();
+            guessedLetters = [];
+            lettersGuessedDiv.textContent = guessedLetters.join(' ');
         }
     }
 }
