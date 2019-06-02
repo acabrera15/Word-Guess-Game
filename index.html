@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Bootstrap link-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -14,14 +14,16 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class='bg-dark'>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Hangman</h1>
-            </div>
-        </div>
-        <div class="row border">
+        <!-- Image and text -->
+<nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="navbar-brand justify-content-center" href="#">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Metallica_wordmark.svg/1280px-Metallica_wordmark.svg.png" width="500" height="100" class="d-inline-block align-top justify-content-center" alt="">
+        </a>
+      </nav>
+
+        <div class="row border bg-light mr-3 ml-3 mt-5 rounded-lg">
             <div class="col-md-6 border-right">
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe id="videoLink" class="embed-responsive-item" src=""
@@ -29,7 +31,7 @@
                 </div>
             </div>
             <div class="col-md-6 text-center">
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-md-12">
                         <p>Press any key to get</p>
                         <p>started!</p>

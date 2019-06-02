@@ -2,7 +2,7 @@
 var winTotal = 0;
 
 //holds number of guesses
-var numOfGuesses = 15;
+var numOfGuesses = 10;
 
 //holds letters already guessed
 var lettersGuessed = [];
@@ -50,7 +50,6 @@ document.onkeyup = function (e) {
                     wordString = wordString.concat('_')
                 }
             }
-            alert(randomWord);
             currentWord.textContent = wordString;
             numGuesses.textContent = numOfGuesses.toString();
             letterChecker(e.key);
@@ -63,12 +62,13 @@ document.onkeyup = function (e) {
                 videoOuput.src = hangmanWords[Object.keys(hangmanWords)[randWordIndex]];
                 currentWord.textContent = '';
                 wordString = '';
-                numOfGuesses = 15;
+                numOfGuesses = 10;
                 numGuesses.textContent = numOfGuesses.toString();
             }
         }
     }
 };
+
 
 //checks to see if the letter is in the song title
 let letterChecker = function (letter) {
@@ -94,7 +94,7 @@ let letterChecker = function (letter) {
             alert('You have lost!');
             currentWord.textContent = '';
             wordString = '';
-            numOfGuesses = 15;
+            numOfGuesses = 10;
             numGuesses.textContent = numOfGuesses.toString();
         }
     }
