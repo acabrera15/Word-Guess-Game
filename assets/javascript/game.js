@@ -7,7 +7,7 @@ var numOfGuesses = 15;
 //holds letters already guessed
 var lettersGuessed = [];
 
-//Songs that can be guessed
+//Songs that can be guessed with links
 const hangmanWords = {
     'Enter Sandman': "https://www.youtube.com/embed/CD-E-LDc384",
     'Of Wolf and Man': "https://www.youtube.com/embed/6biUKaFD7AE",
@@ -28,36 +28,44 @@ var currentWord = document.getElementById('currentWord');//gets the current word
 var numGuesses = document.getElementById('numberOfGuesses'); //guess num of gueses output to screen
 var winsOuput = document.getElementById('wins'); //total wins ouput
 var videoOuput = document.getElementById('videoLink');
+var lettersGuessedDiv = document.getElementById('lettersGuessedDiv');
 var wordString = '';//holds the string that will be ouput to screen
 var randomWord;
 var randWordIndex = 0;
+var guessedLetters = []
 
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
+    console.log(e.keyCode);
+    if (e.keyCode >= 65 && e.keyCode <= 90) {
+        //initializes game
+        if (currentWord.textContent === '') {
+            randWordIndex = Math.floor(Math.random() * Object.keys(hangmanWords).length);
+            randomWord = Object.keys(hangmanWords)[randWordIndex]; //get random word from array
 
-    //initializes game
-    if (currentWord.textContent === '') {
-        randWordIndex = Math.floor(Math.random() * Object.keys(hangmanWords).length);
-        randomWord = Object.keys(hangmanWords)[randWordIndex]; //get random word from array
-
-        for (var i = 0; i < randomWord.length; i++) {
-            if (randomWord[i] === ' ') {
-                wordString = wordString.concat(' ')
-            } else {
-                wordString = wordString.concat('_')
+            for (var i = 0; i < randomWord.length; i++) {
+                if (randomWord[i] === ' ') {
+                    wordString = wordString.concat(' ')
+                } else {
+                    wordString = wordString.concat('_')
+                }
             }
-        }
-        alert(randomWord);
-        currentWord.textContent = wordString;
-        numGuesses.textContent = numOfGuesses.toString();
-        letterChecker(e.key);
-    } else {
-        letterChecker(e.key);
-        if (!wordString.includes('_')) {
-            winTotal++;
-            winsOuput.textContent = winTotal;
+            alert(randomWord);
+            currentWord.textContent = wordString;
+            numGuesses.textContent = numOfGuesses.toString();
+            letterChecker(e.key);
+        } else {
+            letterChecker(e.key);
+            if (!wordString.includes('_')) {
+                winTotal++;
+                winsOuput.textContent = winTotal;
 
-            videoOuput.src = hangmanWords[Object.keys(hangmanWords)[randWordIndex]];
+                videoOuput.src = hangmanWords[Object.keys(hangmanWords)[randWordIndex]];
+                currentWord.textContent = '';
+                wordString = '';
+                numOfGuesses = 15;
+                numGuesses.textContent = numOfGuesses.toString();
+            }
         }
     }
 };
@@ -73,8 +81,21 @@ let letterChecker = function (letter) {
             }
         }
         currentWord.textContent = wordString;
+
     } else {
-        numOfGuesses--;
-        numGuesses.textContent = numOfGuesses.toString();
+        if (!guessedLetters.includes(letter)) {
+            numOfGuesses--;
+            numGuesses.textContent = numOfGuesses.toString();
+            guessedLetters.push(letter);
+            lettersGuessedDiv.textContent = guessedLetters.join(' ');
+        }
+
+        if (numOfGuesses === 0) {
+            alert('You have lost!');
+            currentWord.textContent = '';
+            wordString = '';
+            numOfGuesses = 15;
+            numGuesses.textContent = numOfGuesses.toString();
+        }
     }
 }
