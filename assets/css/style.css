@@ -1,3 +1,11 @@
 #currentWord {
     letter-spacing: 8px;
 }
+
+.dottedBorder {
+    border-style: dotted;
+}
+
+.borderRight {
+    border-right-style: dotted;
+}
