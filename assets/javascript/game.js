@@ -8,34 +8,37 @@ var numOfGuesses = 15;
 var lettersGuessed = [];
 
 //Songs that can be guessed
-const hangmanWords = [
-    'Enter Sandman',
-    'Of Wolf and Man',
-    'Moth Into Flame',
-    'Metal Militia',
-    'All Nightmare Long',
-    'Trapped Under Ice',
-    'The Unforgiven',
-    'Bleeding Me',
-    'My Friend of Misery',
-    'Master of Puppets',
-    'Fuel',
-    'Until it Sleeps',
-    'The Day That Never Comes'
-]
+const hangmanWords = {
+    'Enter Sandman': "https://www.youtube.com/embed/CD-E-LDc384",
+    'Of Wolf and Man': "https://www.youtube.com/embed/6biUKaFD7AE",
+    'Moth Into Flame': "https://www.youtube.com/embed/4tdKl-gTpZg",
+    'Metal Militia': "https://www.youtube.com/embed/sdGrxMKKHbo",
+    'All Nightmare Long': "https://www.youtube.com/embed/EFqjDXy9s5A",
+    'Trapped Under Ice': "https://www.youtube.com/embed/455-CIgc7co",
+    'The Unforgiven': "https://www.youtube.com/embed/Ckom3gf57Yw",
+    'Bleeding Me': "https://www.youtube.com/embed/ftV_XepIwpo",
+    'My Friend of Misery': "https://www.youtube.com/embed/ODHhWcEdrvg",
+    'Master of Puppets': "https://www.youtube.com/embed/xnKhsTXoKCI",
+    'Fuel': "https://www.youtube.com/embed/UBhqOvhy-6o",
+    'Until it Sleeps': "https://www.youtube.com/embed/eRV9uPr4Dz4",
+    'The Day That Never Comes': "https://www.youtube.com/embed/dkNfNR1WYMY"
+};
 
 var currentWord = document.getElementById('currentWord');//gets the current word ouputed to screen
 var numGuesses = document.getElementById('numberOfGuesses'); //guess num of gueses output to screen
 var winsOuput = document.getElementById('wins'); //total wins ouput
+var videoOuput = document.getElementById('videoLink');
 var wordString = '';//holds the string that will be ouput to screen
 var randomWord;
+var randWordIndex = 0;
 
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
 
     //initializes game
     if (currentWord.textContent === '') {
-        randomWord = hangmanWords[Math.floor(Math.random() * hangmanWords.length)]; //get random word from array
+        randWordIndex = Math.floor(Math.random() * Object.keys(hangmanWords).length);
+        randomWord = Object.keys(hangmanWords)[randWordIndex]; //get random word from array
 
         for (var i = 0; i < randomWord.length; i++) {
             if (randomWord[i] === ' ') {
@@ -53,10 +56,13 @@ document.onkeyup = function (e) {
         if (!wordString.includes('_')) {
             winTotal++;
             winsOuput.textContent = winTotal;
+
+            videoOuput.src = hangmanWords[Object.keys(hangmanWords)[randWordIndex]];
         }
     }
 };
 
+//checks to see if the letter is in the song title
 let letterChecker = function (letter) {
     if (randomWord.includes(letter.toLowerCase()) ||
         randomWord.includes(letter.toUpperCase())) {
