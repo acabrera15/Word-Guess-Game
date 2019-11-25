@@ -35,12 +35,12 @@ var randWordIndex = 0;
 var guessedLetters = [];
 var usedWords = [];
 
-function focusOnInput(event){
+document.ontouchstart = function(event) {
     // get the input
     var target = document.getElementById("input");
     if (event.target != target) {
         target.focus();
-        target.click();
+        target.click();git
     }
 }
 
