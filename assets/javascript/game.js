@@ -35,6 +35,15 @@ var randWordIndex = 0;
 var guessedLetters = [];
 var usedWords = [];
 
+function focusOnInput(event){
+    // get the input
+    var target = document.getElementById("input");
+    if (event.target != target) {
+        target.focus();
+        target.click();
+    }
+}
+
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
 
