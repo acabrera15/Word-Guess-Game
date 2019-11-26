@@ -35,54 +35,14 @@ var randWordIndex = 0;
 var guessedLetters = [];
 var usedWords = [];
 
-// document.getElementById('body').onload = function (event) {
-//     // get the input
-//     const target = document.getElementById("input");
-//     target.focus();
-//
-// }
-// document.ontouchend = function() {
-//     document.getElementById('input').focus();
-// }
-const f = function (event) {
-    // $timeout(function() { // angular way, setTimeout is OK
-    //     document.getElementById('input')focus();
-    //     event.preventDefault();
-    // })
-    window.setTimeout(function () { // angular way, setTimeout is OK
-        document.getElementById('input').focus();
-        event.preventDefault();
-    })
-};
-let mobile = false;
-// document.on('click', function(event) {
-//     if(mobile) return;
-//     f(event);
-// });
-
-document.onclick = function (event) {
-    if (mobile) return;
-    f(event);
+function buttonClick()
+{
+    document.getElementById('input').focus();
 }
 
-document.ontouchend = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+window.onload = function() {
+    document.getElementById('inputBtn').click();
 }
-
-document.ontouchstart = function (e) {
-    mobile = true;
-    f(e);
-}
-// div.on('touchstart', function(event) {
-//     mobile = true;
-//     f(event);
-// });
-//
-// div.on('touchend', function(event) {
-//     event.preventDefault();
-//     event.stopPropagation();
-// });
 
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
