@@ -41,6 +41,9 @@ document.getElementById('body').onload = function (event) {
     target.focus();
 
 }
+document.ontouchend = function() {
+    document.getElementById('input').focus();
+}
 
 //functions makes something happen when a key is pushed
 document.onkeyup = function (e) {
