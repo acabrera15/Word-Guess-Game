@@ -42,6 +42,8 @@ function buttonClick()
 
 window.onload = function() {
     document.getElementById('inputBtn').click();
+    document.getElementById("input").click();
+
 }
 
 //functions makes something happen when a key is pushed
