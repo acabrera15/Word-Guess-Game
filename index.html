@@ -7,80 +7,81 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Bootstrap link-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--custom css link-->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <title>Document</title>
 </head>
 
-<body class='bg-dark'>
-    <div class="container text-light">
-        <!-- Image and text -->
-<nav class="navbar navbar-light justify-content-center">
-    <input type="text" id="input" />
-        a<a class="navbar-brand justify-content-center" href="#">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Metallica_wordmark.svg/1280px-Metallica_wordmark.svg.png" width="500" height="100" class="d-inline-block align-top justify-content-center" alt="">
+<body class='bg-dark' id="body">
+<div class="container text-light">
+    <!-- Image and text -->
+    <nav class="navbar navbar-light justify-content-center">
+        <input type="text" id="input" hidden/>
+        <a class="navbar-brand justify-content-center" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Metallica_wordmark.svg/1280px-Metallica_wordmark.svg.png"
+                 width="500" height="100" class="d-inline-block align-top justify-content-center" alt="">
         </a>
-      </nav>
+    </nav>
 
-        <div class="row dottedBorder   mr-3 ml-3 mt-5 rounded-lg ">
-            <div class="col-md-6 borderRight">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="videoLink" class="embed-responsive-item" src=""
+    <div class="row dottedBorder   mr-3 ml-3 mt-5 rounded-lg ">
+        <div class="col-md-6 borderRight">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe id="videoLink" class="embed-responsive-item" src=""
                         allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <p>Press any key to get</p>
+                    <p>started!</p>
                 </div>
             </div>
-            <div class="col-md-6 text-center">
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <p>Press any key to get</p>
-                        <p>started!</p>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Wins</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Wins</p>
-                    </div>
-                    <div class="col-md-12" id="wins"></div>
+                <div class="col-md-12" id="wins"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Current Word</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Current Word</p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p id='currentWord'></p>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p id='currentWord'></p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Number of Guesses</p>
+                    <p>Remaining</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Number of Guesses</p>
-                        <p>Remaining</p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p id='numberOfGuesses'></p>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p id='numberOfGuesses'></p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Letters Already</p>
+                    <p>Guessed</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Letters Already</p>
-                        <p>Guessed</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p id='lettersGuessedDiv'></p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p id='lettersGuessedDiv'></p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+<script type="text/javascript" src="./assets/javascript/game.js"></script>
 </body>
 
 </html>
